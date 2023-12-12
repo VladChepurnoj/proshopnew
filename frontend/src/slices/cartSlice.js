@@ -22,7 +22,7 @@ const cartSlice = createSlice({
 				state.cartItems = [...state.cartItems, item];
 			}
 
-			return updateCart(state);
+			return updateCart(state, item);
 		},
 		removeFromCart: (state, action) => {
 			state.cartItems = state.cartItems.filter((x) => x._id !== action.payload);
@@ -30,7 +30,7 @@ const cartSlice = createSlice({
 			return updateCart(state);
 		},
 		saveShippingAddress: (state, action) => {
-			state.shippingAddress = action.paypal;
+			state.shippingAddress = action.payload;
 			return updateCart(state);
 		},
 		savePaymentMethod: (state, action) => {
