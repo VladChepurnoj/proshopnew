@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Paginate from "../components/Paginate";
+// import Meta from "../components/Meta";
+import ProductCarousel from "../components/ProductCarousel";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
 
 const HomeScreen = () => {
@@ -17,6 +20,13 @@ const HomeScreen = () => {
 
 	return (
 		<Fragment>
+			{!keyword ? (
+				<ProductCarousel />
+			) : (
+				<Link to="/" className="btn btn-light mb-4">
+					Go Back
+				</Link>
+			)}
 			{isLoading ? (
 				<Loader />
 			) : error ? (
